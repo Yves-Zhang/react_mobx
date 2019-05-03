@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import App from '@views/app';
+import RouterConfig from '@views/routerConfig';
 
 import './common';
 
 const appEle = document.getElementById('app');
 
 ReactDom.render(
-    <App />,
+    <RouterConfig />,
     appEle
 );
 

@@ -88,6 +88,7 @@ module.exports = {
             '@http': path.resolve(__dirname, 'src/http'),
             '@mobx': path.resolve(__dirname, 'src/mobx'),
             '@views': path.resolve(__dirname, 'src/views'),
+            '@commonComponents': path.resolve(__dirname, 'src/commonComponents'),
         },
         extensions: ['.jsx', '.js', '.json', '.scss', '.css', '.less']
     }
