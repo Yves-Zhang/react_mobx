@@ -1,6 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
     output: {
@@ -76,7 +77,8 @@ module.exports = {
             title: 'My App',
             template: 'index.html',
             filename: 'index.html'
-        })
+        }),
+        new CleanWebpackPlugin()
     ],
     resolve: {
         //配置别名，在项目中可缩减引用路径
