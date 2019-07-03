@@ -1,5 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config'
+import { BrowserRouter, HashRouter, Router, Switch, Route, Redirect } from 'react-router-dom';
+
+import Header from './header'
+
+// const routes = [
+//     { path: '/',
+//         exact: true,
+//         component: Home,
+//     },
+//     {
+//         path: '/login',
+//         component: Login,
+//     },
+//     {
+//         path: '/user',
+//         component: User,
+//     },
+//     {
+//         path: '*',
+//         component: NotFound
+//     }
+// ]
 
 class Home extends React.Component {
     constructor(props) {
@@ -7,22 +30,12 @@ class Home extends React.Component {
     }
     render() {
         return (
-            <div>
-                hello world!
-                <div>
-                    <ul>
-                        <li>
-                            <Link to="/demoOne">demoOne</Link>
-                        </li>
-                        <li>
-                            <Link to="/demoTwo">demoTwo</Link>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    {this.props.viewComp}
-                    {this.props.children}
-                </div>
+            <div className="homeContent">
+                
+                <Header />  
+                {/* <Switch>
+                    {renderRoutes(routes)}
+                </Switch> */}
             </div>
         )
     }

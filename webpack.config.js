@@ -21,7 +21,7 @@ module.exports = {
                 use: [{
                         loader: MiniCssExtractPlugin.loader,
                         options: {
-                            minimize: true
+                            minimize: true,
                         }
                     },
                     {
@@ -37,7 +37,7 @@ module.exports = {
                 use: [{
                         loader: MiniCssExtractPlugin.loader,
                         options: {
-                            minimize: true
+                            minimize: true,
                         }
                     },
                     {
@@ -60,7 +60,8 @@ module.exports = {
                     loader: 'url-loader',
                     options: {
                         limit: 1024, //表示图片最大为1024KB 
-                        name: 'assets/images/[name].[ext]' // 生成的文件名
+                        name: 'assets/images/[name].[ext]', // 生成的文件名
+                        outputPath: "assets/images"
                     }
                 }]
             }

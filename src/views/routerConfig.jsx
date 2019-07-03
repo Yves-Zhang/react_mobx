@@ -1,40 +1,17 @@
 import React from 'react';
 import { BrowserRouter, HashRouter, Router, Switch, Route } from 'react-router-dom';
-import nav from './nav';
+import AsyncComponent from '@commonComponents/asyncComponent'
 
-class RouterConfig extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-
-    createRouters = (navArr) => {
-        const loop = (list) => {
-            return list.map((item, index) => {
-                if (item.children && item.children.length !== 0) {
-                    return (
-                        <item.comp key={`${index}_comp`} viewComp={loop(item.children)} />
-                    )
-                }
-
-                return (
-                    <Route key={index} exact={item.exact} path={item.path} component={item.comp} />
-                )
-            });
-        }
-        return (
+const RouterConfig = () => {
+    return (
+        <HashRouter>
             <Switch>
-                {loop(navArr)}
+                <Route key="login" exact path="/login" component={AsyncComponent(() => import('@views/login'))} />
+                <Route key="register" exact path="/register" component={AsyncComponent(() => import('@views/register'))} />
+                <Route key="home" path="/" component={AsyncComponent(() => import('@views/home'))} />
             </ Switch>
-        )
-    }
-
-    render() {
-        return (
-            <BrowserRouter>
-                {this.createRouters(nav)}
-            </ BrowserRouter>
-        )
-    }
+        </ HashRouter>
+    )
 }
 
 export default RouterConfig;

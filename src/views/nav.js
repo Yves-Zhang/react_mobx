@@ -11,14 +11,14 @@ const navConfig = [
                 title: 'demoOne',
                 path: '/demoOne',
                 exact: true,
-                comp: AsyncComponent(() => import('@views/demo1')),
+                comp: AsyncComponent(() => import('@views/login')),
                 children: []
             },
             {
                 title: 'demoTwo',
                 path: '/demoTwo',
                 exact: true,
-                comp: AsyncComponent(() => import('@views/demo2')),
+                comp: AsyncComponent(() => import('@views/register')),
                 children: []
             }
         ]
