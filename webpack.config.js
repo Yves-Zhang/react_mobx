@@ -9,7 +9,17 @@ module.exports = {
         filename: 'bundle.js'
     },
     module: {
-        rules: [{
+        rules: [
+            {
+                test: /\.(gif|jpg|jpeg|png|svg)$/i,
+                use: [{
+                    loader: 'url-loader',
+                    options: {
+                        limit: false,
+                    }
+                }]
+            },
+            {
                 test: /(\.jsx|\.js)$/,
                 use: {
                     loader: "babel-loader"
@@ -21,7 +31,7 @@ module.exports = {
                 use: [{
                         loader: MiniCssExtractPlugin.loader,
                         options: {
-                            minimize: true,
+                            minimize: true
                         }
                     },
                     {
@@ -37,7 +47,7 @@ module.exports = {
                 use: [{
                         loader: MiniCssExtractPlugin.loader,
                         options: {
-                            minimize: true,
+                            minimize: true
                         }
                     },
                     {
@@ -53,17 +63,6 @@ module.exports = {
                         }
                     }
                 ],
-            },
-            {
-                test: /\.(gif|jpg|jpeg|png|svg)$/,
-                use: [{
-                    loader: 'url-loader',
-                    options: {
-                        limit: 1024, //表示图片最大为1024KB 
-                        name: 'assets/images/[name].[ext]', // 生成的文件名
-                        outputPath: "assets/images"
-                    }
-                }]
             }
         ]
     },

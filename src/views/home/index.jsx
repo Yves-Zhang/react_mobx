@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config'
 import { BrowserRouter, HashRouter, Router, Switch, Route, Redirect } from 'react-router-dom';
 
+import './style.less'
+
 import Header from './header'
 
 // const routes = [
