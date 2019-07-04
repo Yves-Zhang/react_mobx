@@ -3,8 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPugin = require('copy-webpack-plugin')
-const dev_env = process.env.NODE_DEV == 'dev';
-
+const dev_env = process.env.NODE_ENV == 'dev';
 
 module.exports = {
     output: {
