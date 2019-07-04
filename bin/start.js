@@ -22,7 +22,7 @@ const app = express();// 初始化
 app.use(devMiddleWare);
 app.use(hotMiddleWare);
 
-// app.use(express.static(require('path').join(__dirname, '../dist')));
+app.use(express.static(__dirname));
 
 app.listen(port, host, () => {
     console.log("Server running at http://%s:%s", host, port)

@@ -2,6 +2,9 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyWebpackPugin = require('copy-webpack-plugin')
+const NODE_DEV = process.env.NODE_DEV || 'dev';
+
 
 module.exports = {
     output: {
@@ -9,13 +12,13 @@ module.exports = {
         filename: 'bundle.js'
     },
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.(gif|jpg|jpeg|png|svg)$/i,
                 use: [{
                     loader: 'url-loader',
                     options: {
-                        limit: false,
+                        limit: 10000,
+                        name: '[name].[ext]'
                     }
                 }]
             },
@@ -28,7 +31,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: [{
+                use: [NODE_DEV == 'dev' ? 'style-loader' : {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
                             minimize: true
@@ -44,7 +47,7 @@ module.exports = {
             },
             {
                 test: /\.less$/,
-                use: [{
+                use: [NODE_DEV == 'dev' ? 'style-loader' : {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
                             minimize: true
@@ -78,7 +81,11 @@ module.exports = {
             template: 'index.html',
             filename: 'index.html'
         }),
-        new CleanWebpackPlugin()
+        new CleanWebpackPlugin(),
+        new CopyWebpackPugin([{
+            from: path.join(__dirname, 'src/assets'),
+            to: path.join(__dirname, 'dist', 'assets')
+        }])
     ],
     resolve: {
         //配置别名，在项目中可缩减引用路径
