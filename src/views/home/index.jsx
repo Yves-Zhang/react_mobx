@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config'
 import { BrowserRouter, HashRouter, Router, Switch, Route, Redirect } from 'react-router-dom';
 
-import './style.less'
+import { getTestData } from '@http/testHttp'
 
 import Header from './header'
 
@@ -30,11 +30,15 @@ class Home extends React.Component {
     constructor(props) {
         super(props)
     }
+
+    componentDidMount() {
+        getTestData()
+    }
     render() {
         return (
             <div className="homeContent">
-                
-                <Header />  
+
+                <Header />
                 {/* <Switch>
                     {renderRoutes(routes)}
                 </Switch> */}

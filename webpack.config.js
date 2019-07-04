@@ -91,7 +91,7 @@ module.exports = {
         alias: {
             '@': path.resolve(__dirname, 'src'),
             '@assets': path.resolve(__dirname, 'src/assets'),
-            '@http': path.resolve(__dirname, 'src/http'),
+            '@http': path.resolve(__dirname, 'src/httpServer'),
             '@mobx': path.resolve(__dirname, 'src/mobx'),
             '@views': path.resolve(__dirname, 'src/views'),
             '@commonComponents': path.resolve(__dirname, 'src/commonComponents'),
