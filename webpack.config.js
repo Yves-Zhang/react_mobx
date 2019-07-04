@@ -3,7 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPugin = require('copy-webpack-plugin')
-const NODE_DEV = process.env.NODE_DEV || 'dev';
+const dev_env = process.env.NODE_DEV == 'dev';
 
 
 module.exports = {
@@ -17,8 +17,8 @@ module.exports = {
                 use: [{
                     loader: 'url-loader',
                     options: {
-                        limit: 10000,
-                        name: '[name].[ext]'
+                        limit: 1024,
+                        name: 'assets/[name].[hash:5].[ext]'
                     }
                 }]
             },
@@ -31,7 +31,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: [NODE_DEV == 'dev' ? 'style-loader' : {
+                use: [dev_env ? "style-loader" : {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
                             minimize: true
@@ -47,7 +47,7 @@ module.exports = {
             },
             {
                 test: /\.less$/,
-                use: [NODE_DEV == 'dev' ? 'style-loader' : {
+                use: [dev_env ? "style-loader" : {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
                             minimize: true
@@ -56,15 +56,15 @@ module.exports = {
                     {
                         loader: 'css-loader',
                         options: {
-                            url: false
+                            // url: false 不可以设置为false 否则会导致css里的url不处理
                         }
                     },
                     {
                         loader: 'less-loader',
                         options: {
-                            url: false
+                            // url: false 不可以设置为false 否则会导致css里的url不处理
                         }
-                    }
+                    } //
                 ],
             }
         ]
