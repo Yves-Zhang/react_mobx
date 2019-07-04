@@ -8,6 +8,9 @@ const webpackDev = {
     entry: ['webpack-hot-middleware/client.js', './src/index.jsx'],
     mode: 'development',
     plugins: [
+        new webpack.DefinePlugin({
+            "process.env.NODE_ENV":JSON.stringify(process.env.NODE_ENV)
+        }),
         new webpack.HotModuleReplacementPlugin(),
         new OpenBrowserPlugin({
             url: "http://" + hostConfig.host + ":" + hostConfig.port
