@@ -1,5 +1,6 @@
 const merge = require("webpack-merge");
 const webpackConfig = require("./webpack.config");
+const webpack = require("webpack")
 
 const webpackPro = {
     entry: ['./src/index.jsx'],
